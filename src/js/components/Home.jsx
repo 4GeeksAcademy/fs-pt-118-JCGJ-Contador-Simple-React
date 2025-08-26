@@ -26,6 +26,16 @@ const Home = ({ timer }) => {
     Math.floor(timer / 10) % 10,
     timer % 10,
   ];
+  // quise agregar colores al contador algo parecido a lo de clases 
+  const colors = [
+    "text-success",
+    "text-warning",
+    "text-danger",
+    "text-primary",
+    "text-ligth",
+  ];
+  // esto va ser que cada 10s el contador cambie de color tomando el indice de colors[0,1,2,3,4]
+  const colorIndex = Math.floor(timer / 10) % colors.length;
 
   return (
     <div className="container d-flex flex-column align-items-center my-3">
@@ -44,7 +54,7 @@ const Home = ({ timer }) => {
           <Card value={d6} /> */}
         {/* segunda forma con map */}
         {digit.map((el, i) => (
-          <Card key={[i]} value={el} />
+          <Card key={[i]} value={el} className={colors[colorIndex]} />
         ))}
       </div>
     </div>
